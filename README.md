@@ -174,17 +174,15 @@ cdk bootstrap aws://<staging-account-id>/<aws-region> --trust <development-accou
 
 To learn more about CDK Bootstrapping, check [here](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
 
-In the `lib/cdk-pipeline-stack.ts` file, provide values for the variables:
+In the `lib/params.ts` file, provide values for the variables:
 
-- `GITHUB_REPO` — empty repository you created as part of the prerequisites. You will push your CDK code to this repository. Should be in the following format: “<username>/<repository-name>”
+- `GITHUB_REPO` — empty repository you created as part of the prerequisites. You will push your CDK code to this repository. Should be in the following format: “\<username\>/\<repository-name\>”
 - `BRANCH_NAME` — name of the branch you intend to use in your repository.
 - `GITHUB_TOKEN` — name of the secret you created in AWS Secrets Manager. This secret must store your GitHub personal access token.
 - `AWS_REGION` — AWS region where you intend to deploy your stack, e.g. “eu-west-1” or “us-east-1”.
 - `DEV_ACCOUNT_ID` — ID of the account where you will deploy the pipeline. For demonstration purposes, this account will also be used as a developer environment where we will do the first deployment.
 - `STAGING_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Developer environment.
 - `PROD_ACCOUNT_ID` — ID of the account to be used as a production environment account. The stack will be deployed to this account after successful deployment to Staging environment.
-
-In the `bin/cdk-pipeline.ts` file, populate the values for `AWS_REGION` and `DEV_ACCOUNT_ID`.
 
 Save your changes and push them to your empty GitHub repo:
 

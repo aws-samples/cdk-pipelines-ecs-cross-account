@@ -2,14 +2,7 @@ import { Stack, StackProps, SecretValue } from 'aws-cdk-lib';
 import { CodePipeline, CodePipelineSource, ShellStep, ManualApprovalStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { BaseStage } from './base-stage';
-
-const GITHUB_REPO = "";
-const BRANCH_NAME = "";
-const GITHUB_TOKEN = "";
-const AWS_REGION = "";
-const DEV_ACCOUNT_ID = "";
-const STAGING_ACCOUNT_ID = "";
-const PROD_ACCOUNT_ID = "";
+import { Params } from './params';
 
 export class CdkPipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -18,8 +11,8 @@ export class CdkPipelineStack extends Stack {
     const pipeline = new CodePipeline(this, 'Pipeline', {
       crossAccountKeys: true,
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub(GITHUB_REPO, BRANCH_NAME, {
-          authentication: SecretValue.secretsManager(GITHUB_TOKEN)
+        input: CodePipelineSource.gitHub(Params.GITHUB_REPO, Params.BRANCH_NAME, {
+          authentication: SecretValue.secretsManager(Params.GITHUB_TOKEN)
         }),
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
@@ -27,8 +20,8 @@ export class CdkPipelineStack extends Stack {
 
     const devStage = new BaseStage(this, 'DevStage', {
       env: {
-        account: DEV_ACCOUNT_ID,
-        region: AWS_REGION
+        account: Params.DEV_ACCOUNT_ID,
+        region: Params.AWS_REGION
       },
       customGreeting: 'Hi from Dev account',
       bg: '#FF0000'
@@ -36,8 +29,8 @@ export class CdkPipelineStack extends Stack {
 
     const stagingStage = new BaseStage(this, 'StagingStage', {
       env: {
-        account: STAGING_ACCOUNT_ID,
-        region: AWS_REGION
+        account: Params.STAGING_ACCOUNT_ID,
+        region: Params.AWS_REGION
       },
       customGreeting: 'Hi from Staging account',
       bg: '#00FF00'
@@ -45,8 +38,8 @@ export class CdkPipelineStack extends Stack {
 
     const prodStage = new BaseStage(this, 'ProdStage', {
       env: {
-        account: PROD_ACCOUNT_ID,
-        region: AWS_REGION
+        account: Params.PROD_ACCOUNT_ID,
+        region: Params.AWS_REGION
       },
       customGreeting: 'Hi from Prod account',
       bg: '#0000FF'
