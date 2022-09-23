@@ -188,13 +188,13 @@ In the `bin/cdk-pipeline.ts` file, populate the values for `AWS_REGION` and `DEV
 Save your changes and push them to your empty GitHub repo:
 
 ```bash
-git remote add origin <YOUR_GITHUB_REPO>
+git remote set-url origin <YOUR_GITHUB_REPO_URL>
 git add .
 git commit -m ‘updated vars’
 git push
 ```
 
-Deploy your CDK application using CDK CLI:
+Deploy your CDK application using CDK CLI (Note that since we are deploying the pipeline into DEV_ACCOUNT, this action must performed using your DEV_ACCOUNT credentials):
 
 ```bash
 cdk deploy
