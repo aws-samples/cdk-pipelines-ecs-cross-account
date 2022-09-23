@@ -184,7 +184,13 @@ In the `lib/params.ts` file, provide values for the variables:
 - `STAGING_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Developer environment.
 - `PROD_ACCOUNT_ID` — ID of the account to be used as a production environment account. The stack will be deployed to this account after successful deployment to Staging environment.
 
-Save your changes and push them to your empty GitHub repo:
+Save your changes and run the following command, make sure you use AWS credentials from your "Development" account:
+```bash
+cdk synth
+```
+Running the command generates, among other things, a `cdk.context.json` file, which is required for our cross-account deployment to work.
+
+Push the changes to your empty GitHub repo:
 
 ```bash
 git remote set-url origin <YOUR_GITHUB_REPO_URL>
