@@ -160,7 +160,6 @@ Even though every attempt has been made to keep the running costs of this soluti
 git clone https://github.com/aws-samples/cdk-pipelines-ecs-cross-account
 cd cdk-pipelines-ecs-cross-account
 npm install
-npm run build
 ```
 
 ## Usage
@@ -169,7 +168,9 @@ Prior to deploying the stack, create an empty GitHub repository and generate a [
 
 In order for cross-account deployments to work, you will need to bootstrap your “Staging” and “Production” accounts so that they trust the “Development” account. For example, in order to make “Staging” account trust “Development” account to perform cross-account deployments, you will need to bootstrap the “Staging” account using CDK CLI like following:
 
-`cdk bootstrap aws://<staging-account-id>/<aws-region> --trust <development-account-id>`
+```bash
+cdk bootstrap aws://<staging-account-id>/<aws-region> --trust <development-account-id>
+```
 
 To learn more about CDK Bootstrapping, check [here](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
 
@@ -181,7 +182,7 @@ In the `lib/cdk-pipeline-stack.ts` file, provide values for the variables:
 - `AWS_REGION` — AWS region where you intend to deploy your stack, e.g. “eu-west-1” or “us-east-1”.
 - `DEV_ACCOUNT_ID` — ID of the account where you will deploy the pipeline. For demonstration purposes, this account will also be used as a developer environment where we will do the first deployment.
 - `STAGING_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Developer environment.
-- `PROD_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Staging environment.
+- `PROD_ACCOUNT_ID` — ID of the account to be used as a production environment account. The stack will be deployed to this account after successful deployment to Staging environment.
 
 In the `bin/cdk-pipeline.ts` file, populate the values for `AWS_REGION` and `DEV_ACCOUNT_ID`.
 
