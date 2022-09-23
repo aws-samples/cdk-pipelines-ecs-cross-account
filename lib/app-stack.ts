@@ -61,7 +61,7 @@ export class AppStack extends Stack {
 
       const listener = this.alb.addListener('Listener', { port: 80, protocol: lb.ApplicationProtocol.HTTP });
 
-      listener.addTargets('ecsTG', {
+      listener.addTargets('EcsTG', {
           port: 80,
           targets: [fargateEcsService],
           protocol: lb.ApplicationProtocol.HTTP,

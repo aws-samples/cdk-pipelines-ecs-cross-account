@@ -64,7 +64,6 @@ export class CdkPipelineStack extends Stack {
       envFromCfnOutputs: {albAddress: stagingStage.albAddress},
       commands: ['curl -f -s -o /dev/null -w "%{http_code}" $albAddress']
     }));
-
     
     const pipelineProdStage = pipeline.addStage(prodStage);   
 

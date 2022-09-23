@@ -1,14 +1,15 @@
 # **Cross-account ECS deployments using CDK Pipelines**
 
-- Overview
-- Architecture
-- Solution overview
-- Running costs
-- Prerequisites
-- Installation
-- Usage
-- Clean up
-- License
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Solution overview](#solution-overview)
+- [Running costs](#running-costs)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Clean up](#clean-up)
+- [Security](#security)
+- [License](#license)
 
 ## Overview
 
@@ -201,8 +202,8 @@ cdk deploy
 
 Note that running `cdk destroy` in this application will only delete the pipeline stack. In order to delete the stacks deployed by the pipeline, go to AWS Console, open CloudFormation page and delete the stacks manually in the following order:
 
-1. <StageName>-AppStack
-2. <StageName>-BaseStack
+1. \<StageName\>-AppStack
+2. \<StageName\>-BaseStack
 
 You will need to do it in all accounts you’ve deployed the stacks to.
 
@@ -212,4 +213,4 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 
 ## License
 
-This library is licensed under the MIT-0 License. See the LICENSE file.
+This library is licensed under the MIT-0 License. See the [LICENSE](LICENSE) file.
