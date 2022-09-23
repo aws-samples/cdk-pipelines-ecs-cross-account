@@ -183,6 +183,8 @@ In the `lib/cdk-pipeline-stack.ts` file, provide values for the variables:
 - `STAGING_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Developer environment.
 - `PROD_ACCOUNT_ID` — ID of the account to be used as a staging environment account. The stack will be deployed to this account after successful deployment to Staging environment.
 
+In the `bin/cdk-pipeline.ts` file, populate the values for `AWS_REGION` and `DEV_ACCOUNT_ID`.
+
 Save your changes and push them to your empty GitHub repo:
 
 ```bash
