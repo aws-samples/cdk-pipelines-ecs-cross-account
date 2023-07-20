@@ -15,7 +15,7 @@ MarkupSafe==1.1.1
 packaging==20.9
 pep517==0.10.0
 pkginfo==1.7.0
-Pygments==2.9.0
+Pygments==2.15.0
 pyparsing==2.4.7
 readme-renderer==29.0
 requests==2.25.1
